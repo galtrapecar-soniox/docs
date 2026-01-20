@@ -6,10 +6,10 @@ Get started using the [Soniox](https://soniox.com/) audio transcription loader i
 
 ## Setup
 
-Install the LangChain community package:
+Install the package:
 
 ```bash npm2yarn
-npm install @langchain/community
+npm install @soniox/langchain
 ```
 
 ### Credentials
@@ -27,11 +27,11 @@ export SONIOX_API_KEY=your_api_key
 Transcribe audio files using the `SonioxAudioTranscriptLoader`:
 
 ```typescript
-import { SonioxAudioTranscriptLoader } from "@langchain/community/document_loaders/web/soniox";
+import { SonioxAudioTranscriptLoader } from "@soniox/langchain";
 
 // Fetch the file
 const response = await fetch("https://github.com/soniox/soniox_examples/raw/refs/heads/master/speech_to_text/assets/coffee_shop.mp3");
-const audioBuffer = await response.bytes() // Uint8Array;
+const audioBuffer = await response.bytes(); // Uint8Array
 
 const loader = new SonioxAudioTranscriptLoader(
   {
