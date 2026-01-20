@@ -36,7 +36,6 @@ const audioBuffer = await response.bytes() // Uint8Array;
 const loader = new SonioxAudioTranscriptLoader(
   {
     audio: audioBuffer, // Or you can pass in a URL string
-    audioFormat: "mp3"
   },
   {
     model: "stt-async-v3",
@@ -59,7 +58,6 @@ Transcribe and translate between two languages simultaneously:
 const loader = new SonioxAudioTranscriptLoader(
   {
     audio: audioBuffer,
-    audioFormat: "mp3"
   },
   {
     model: "stt-async-v3",
@@ -85,7 +83,6 @@ Translate from any detected language to a target language:
 const loader = new SonioxAudioTranscriptLoader(
   {
     audio: audioBuffer,
-    audioFormat: "wav"
   },
   {
     model: "stt-async-v3",
@@ -102,6 +99,22 @@ const docs = await loader.load();
 
 ## Advanced usage
 
+### Language hints
+
+Provide [language hints](https://soniox.com/docs/stt/concepts/language-hints) to improve transcription accuracy:
+
+```typescript
+const loader = new SonioxAudioTranscriptLoader(
+  {
+    audio: audioBuffer,
+  },
+  {
+    model: "stt-async-v3",
+    language_hints: ["en", "es"],
+  }
+);
+```
+
 ### Context for improved accuracy
 
 Provide domain-specific [context](https://soniox.com/docs/stt/concepts/context) to improve transcription accuracy:
@@ -110,7 +123,6 @@ Provide domain-specific [context](https://soniox.com/docs/stt/concepts/context) 
 const loader = new SonioxAudioTranscriptLoader(
   {
     audio: audioBuffer,
-    audioFormat: "mp3"
   },
   {
     model: "stt-async-v3",
